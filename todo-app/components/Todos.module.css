@@ -1,0 +1,10 @@
+.todos {
+    display: flex;
+    justify-content:flex-start;
+    
+}
+
+.todos input {
+    width: 30rem;
+    height: 30px;
+}
