@@ -1,7 +1,7 @@
 .todolist {
     display: flex;
     justify-content: space-between;
-    width: 30%;
+    width: 60%;
 }
 
 .todolist button {

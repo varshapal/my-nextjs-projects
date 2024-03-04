@@ -5,23 +5,11 @@ import TodoList from "@/components/TodoList";
 
 const Home = (props) => {
     
-    const addTodoHandler = async (enteredTodoData) => {
-        const response = await fetch('/api/new-todo', {
-            method: 'POST',
-            body: JSON.stringify(enteredTodoData),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        });
-
-        const data = await response.json();
-        console.log(data);
-        
-    }
+    
     return(
         <Fragment>
-        <h1>Home Page</h1>
-        <Todos onAddTodos={addTodoHandler}/>
+        <h1>Todo List</h1>
+        
         <TodoList todos={props.todos}/>
         </Fragment>
     )
@@ -35,17 +23,15 @@ export const getStaticProps = async() => {
 
     const todosCollection = db.collection('todos');
     const todos = await todosCollection.find().toArray();
-    console.log(todos);
+    // console.log("todos",todos);
     const serilizeData = JSON.parse(JSON.stringify(todos));
+    // console.log(serilizeData);
     client.close();
     
     return {
+        
         props: {
-            todos: serilizeData.map((todo) => ({
-                todo: todo.data,
-                id: todo._id.toString(),
-
-            }))
+            todos: serilizeData,
         },
         revalidate: 1,
     }

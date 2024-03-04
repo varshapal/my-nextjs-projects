@@ -1,10 +1,11 @@
 import classes from './TodoList.module.css';
 const TodoList = (props) => {
+    console.log(props.todos);
     return(
         <ul>
             {props.todos.map((todo) => (
                 <div className={classes.todolist}>
-                    <li key={todo.id}>{todo.todo}</li>
+                    <li key={todo.data.id}>{todo.data.name}</li>
                     <div>
                         <button>Delete</button>
                         <button>&#x2714;</button>

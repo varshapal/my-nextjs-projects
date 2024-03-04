@@ -2,8 +2,8 @@ import { Fragment, useRef, useState } from 'react';
 import classes from './Todos.module.css';
 const Todos = (props) => {
     const [enteredTodo, setEnteredTodo] = useState("");
-    const [todoList, setTodoList] = useState([]);
-    console.log(todoList);
+    
+    
 
     const changeEventHandler = (event) => {
         event.preventDefault();
@@ -14,13 +14,13 @@ const Todos = (props) => {
         event.preventDefault();
         // setTodoList([
         //     ...todoList,
-        //     enteredTodo
-        // ])
+        
+        const todoData = {
+            name: enteredTodo,
+            status: 'incomplete',
+        }
 
-        // const todoData = {
-        //     todo: enteredTodo
-        // }
-        props.onAddTodos(enteredTodo);
+        props.onAddTodos(todoData);
         setEnteredTodo("");
     }
     return(
